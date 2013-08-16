@@ -1,10 +1,13 @@
-ListViewAnimations ([Play Store Demo][1])
-===========
+ListViewAnimations SDK >= 14
+============================
 
 ListViewAnimations is an Open Source Android library that allows developers to easily create ListViews with animations.
 Feel free to use it all you want in your Android apps provided that you cite this project and include the license in your app.
 
-ListViewAnimations uses the [NineOldAndroids][2] library to support devices <3.0.  
+This version of ListViewAnimations supports devices with Android 4.0 (SDK level 14) or higher.
+
+The [original version][2] by Niek Haarman has more dependencies and thus is able to support much older Android versions.
+
 It also uses Roman Nurik's BETA [SwipeDismissListViewTouchListener][5] to support swipe to dismiss.
 
 Version 2.0 now supports GridViews! (And other implementations of AbsListView)  
@@ -97,11 +100,12 @@ See the examples.
 Developed By
 -----
 * Niek Haarman
+* Philipp Henkel
 
 License
 -----
 
-	Copyright 2013 Niek Haarman
+	Copyright 2013 Niek Haarman, Philipp Henkel
 
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
@@ -116,7 +120,7 @@ License
 	limitations under the License.
 
  [1]: https://play.google.com/store/apps/details?id=com.haarman.listviewanimations
- [2]: http://nineoldandroids.com/
+ [2]: http://nhaarman.github.io/ListViewAnimations
  [3]: http://en.wikipedia.org/wiki/Decorator_pattern
  [4]: https://github.com/nhaarman/ListViewAnimations/blob/master/com.haarman.listviewanimations-2.1.jar?raw=true
  [5]: https://gist.github.com/romannurik/2980593
