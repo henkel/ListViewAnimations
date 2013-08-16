@@ -26,12 +26,9 @@ import android.view.ViewConfiguration;
 import android.widget.AbsListView;
 import android.widget.ListView;
 
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.AnimatorListenerAdapter;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
-import static com.nineoldandroids.view.ViewHelper.setAlpha;
-import static com.nineoldandroids.view.ViewHelper.setTranslationX;
-import static com.nineoldandroids.view.ViewPropertyAnimator.animate;
 
 /**
  * An OnTouchListener for the ContextualUndoAdapter.
@@ -159,7 +156,7 @@ public class ContextualUndoListViewTouchListener implements View.OnTouchListener
                     // dismiss
                     final View downView = mDownView; // mDownView gets none'd before animation ends
                     final int downPosition = mDownPosition;
-                    animate(mDownView)
+                    mDownView.animate()
                             .translationX(dismissRight ? mViewWidth : -mViewWidth)
                             .alpha(0)
                             .setDuration(mAnimationTime)
@@ -171,7 +168,7 @@ public class ContextualUndoListViewTouchListener implements View.OnTouchListener
                             });
                 } else {
                     // cancel
-                    animate(mDownView)
+                    mDownView.animate()
                             .translationX(0)
                             .alpha(1)
                             .setDuration(mAnimationTime)
@@ -205,8 +202,8 @@ public class ContextualUndoListViewTouchListener implements View.OnTouchListener
                 }
 
                 if (mSwiping) {
-                    setTranslationX(mDownView, deltaX);
-                    setAlpha(mDownView, Math.max(0f, Math.min(1f,
+                    mDownView.setTranslationX(deltaX);
+                    mDownView.setAlpha(Math.max(0f, Math.min(1f,
                             1f - 2f * Math.abs(deltaX) / mViewWidth)));
                     return true;
                 }

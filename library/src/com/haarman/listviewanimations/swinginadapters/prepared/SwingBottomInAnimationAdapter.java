@@ -20,8 +20,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import com.haarman.listviewanimations.swinginadapters.SingleAnimationAdapter;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.ObjectAnimator;
+import android.animation.Animator;
+import android.animation.ObjectAnimator;
 
 /**
  * An implementation of the AnimationAdapter class which applies a

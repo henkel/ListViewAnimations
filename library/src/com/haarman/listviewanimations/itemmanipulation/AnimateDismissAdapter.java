@@ -26,11 +26,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import com.haarman.listviewanimations.BaseAdapterDecorator;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
-import com.nineoldandroids.animation.AnimatorSet;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.AnimatorSet;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
 /**
  * A BaseAdapterDecorator class that provides animations to the removal of items

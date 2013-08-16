@@ -5,7 +5,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import com.haarman.listviewanimations.swinginadapters.AnimationAdapter;
-import com.nineoldandroids.animation.Animator;
+import android.animation.Animator;
 
 public class AlphaInAnimationAdapter extends AnimationAdapter {
 

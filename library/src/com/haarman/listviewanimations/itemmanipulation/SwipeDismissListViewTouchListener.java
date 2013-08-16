@@ -18,9 +18,6 @@
  */
 package com.haarman.listviewanimations.itemmanipulation;
 
-import static com.nineoldandroids.view.ViewHelper.setAlpha;
-import static com.nineoldandroids.view.ViewPropertyAnimator.animate;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -35,10 +32,9 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ListView;
 
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.AnimatorListenerAdapter;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.view.ViewHelper;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
 
 /**
  * A {@link android.view.View.OnTouchListener} that makes the list items in a
@@ -176,7 +172,7 @@ public class SwipeDismissListViewTouchListener implements View.OnTouchListener {
 														// ends
 					final int downPosition = mDownPosition;
 					++mDismissAnimationRefCount;
-					animate(mDownView).translationX(dismissRight ? mViewWidth : -mViewWidth).alpha(0).setDuration(mAnimationTime).setListener(new AnimatorListenerAdapter() {
+					mDownView.animate().translationX(dismissRight ? mViewWidth : -mViewWidth).alpha(0).setDuration(mAnimationTime).setListener(new AnimatorListenerAdapter() {
 						@Override
 						public void onAnimationEnd(Animator animation) {
 							performDismiss(downView, downPosition);
@@ -184,7 +180,7 @@ public class SwipeDismissListViewTouchListener implements View.OnTouchListener {
 					});
 				} else {
 					// cancel
-					animate(mDownView).translationX(0).alpha(1).setDuration(mAnimationTime).setListener(null);
+					mDownView.animate().translationX(0).alpha(1).setDuration(mAnimationTime).setListener(null);
 				}
 				mVelocityTracker = null;
 				mDownX = 0;
@@ -213,8 +209,8 @@ public class SwipeDismissListViewTouchListener implements View.OnTouchListener {
 				}
 
 				if (mSwiping) {
-					ViewHelper.setTranslationX(mDownView, deltaX);
-					setAlpha(mDownView, Math.max(0f, Math.min(1f, 1f - 2f * Math.abs(deltaX) / mViewWidth)));
+					mDownView.setTranslationX(deltaX);
+					mDownView.setAlpha(Math.max(0f, Math.min(1f, 1f - 2f * Math.abs(deltaX) / mViewWidth)));
 					return true;
 				}
 				break;
@@ -271,8 +267,8 @@ public class SwipeDismissListViewTouchListener implements View.OnTouchListener {
 					ViewGroup.LayoutParams lp;
 					for (PendingDismissData pendingDismiss : mPendingDismisses) {
 						// Reset view presentation
-						ViewHelper.setAlpha(pendingDismiss.view, 1f);
-						ViewHelper.setTranslationX(pendingDismiss.view, 0);
+						pendingDismiss.view.setAlpha(1f);
+						pendingDismiss.view.setTranslationX(0);
 						lp = pendingDismiss.view.getLayoutParams();
 						lp.height = 0;
 						pendingDismiss.view.setLayoutParams(lp);
